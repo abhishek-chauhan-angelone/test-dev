@@ -1,0 +1,61 @@
+<h1>Documentation for alg-pipelines</h1>
+<h2>1. alg-delta-file-generator</h2>
+<h3>Job Title:</h3>
+<p>ALG Delta File Generator</p>
+<h3>Job Purpose:</h3>
+<p>This job generates the ALG Delta file.</p>
+<h3>Required Resources:</h3>
+<p>Core ALG files.</p>
+<h3>S3 Bucket Dependencies:</h3>
+<p>alg-generated-limit-file, alg-generated-pool-file, alg-generated-dp-file.</p>
+<h3>Execution Schedule:</h3>
+<p>On-demand.</p>
+<h3>Scheduler:</h3>
+<p>N/A.</p>
+<h3>Job Priority:</h3>
+<p>High (but triggered on-demand).</p>
+<h3>Expected Impact:</h3>
+<p>Affects the requested customer(s).</p>
+<h3>Step Function Used:</h3>
+<p>N/A.</p>
+<h3>Lambda Function Used:</h3>
+<p>N/A.</p>
+<h3>Notification Channels:</h3>
+<p>N/A.</p>
+<h3>Email Subject:</h3>
+<p>N/A.</p>
+<h3>Output Format:</h3>
+<p>TXT.</p>
+<h3>Output S3 Bucket:</h3>
+<p>alg-generated-delta-file.</p>
+<p>====================================</p>
+<h2>2. alg-bo-data-extractor</h2>
+<h3>Job Title:</h3>
+<p>ALG BO Data Extractor</p>
+<h3>Job Purpose:</h3>
+<p>This job Extract and Load the Back-Office Data</p>
+<h3>Required Resources:</h3>
+<p>Back-office Databases.</p>
+<h3>S3 Bucket Dependencies:</h3>
+<p>NA.</p>
+<h3>Execution Schedule:</h3>
+<p>MON-SAT 04:30AM.</p>
+<h3>Scheduler:</h3>
+<p>Glue-Job Schedule.</p>
+<h3>Job Priority:</h3>
+<p>High.</p>
+<h3>Expected Impact:</h3>
+<p>Affects the ALG Core Files.</p>
+<h3>Step Function Used:</h3>
+<p>N/A.</p>
+<h3>Lambda Function Used:</h3>
+<p>N/A.</p>
+<h3>Notification Channels:</h3>
+<p>N/A.</p>
+<h3>Email Subject:</h3>
+<p>N/A.</p>
+<h3>Output Format:</h3>
+<p>ORC.</p>
+<h3>Output S3 Bucket:</h3>
+<p>alg-backoffice-data-migration.</p>
+<p>====================================</p>
