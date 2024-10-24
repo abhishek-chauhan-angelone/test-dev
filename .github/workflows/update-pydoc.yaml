@@ -21,7 +21,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # If you need any external dependencies, add them here
+        python -m pip install markdown  # Install the missing markdown module
+
     - name: Run pydoc parser
       run: |
         python scripts/pydoc_parser.py
