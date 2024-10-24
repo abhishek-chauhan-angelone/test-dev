@@ -26,6 +26,7 @@ jobs:
     - name: Run pydoc parser
       run: |
         python scripts/pydoc_parser.py
+
     - name: Commit changes
       run: |
         git config --local user.email "action@github.com"
@@ -33,6 +34,7 @@ jobs:
         mv -i docs/pydoc.md README.md
         git add README.md
         git diff --quiet && git diff --staged --quiet || git commit -m "Update PyDoc documentation"
+
     - name: Push changes if push event
       if: github.event_name == 'push'
       uses: ad-m/github-push-action@master
