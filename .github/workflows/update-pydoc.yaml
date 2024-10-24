@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
-      - master  # or master, depending on your default branch name
+      - main  # or master, depending on your default branch name
 
 jobs:
   update-pydoc:
