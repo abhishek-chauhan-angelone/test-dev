@@ -27,7 +27,7 @@ jobs:
         python -m pip install markdown
     - name: Run pydoc extraction script
       run: |
-        python script/pydoc_parser.py README.md
+        python scripts/pydoc_parser.py README.md
 
     - name: Commit changes
       run: |
