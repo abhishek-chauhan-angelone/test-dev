@@ -1,0 +1,48 @@
+name: Update PyDoc Documentation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - master  # or master, depending on your default branch name
+
+jobs:
+  update-pydoc:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # If you need any external dependencies, add them here
+    - name: Run pydoc parser
+      run: |
+        python scripts/pydoc_parser.py
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        mv -i docs/pydoc.md README.md
+        git add README.md
+        git diff --quiet && git diff --staged --quiet || git commit -m "Update PyDoc documentation"
+    - name: Push changes if push event
+      if: github.event_name == 'push'
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+
+    - name: Push changes to PR branch if pull request event
+      if: github.event_name == 'pull_request'
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.head_ref }}
+        force: true
