@@ -1,6 +1,5 @@
 import ast
 import os
-import markdown as m
 
 # Define the fields you want to extract from the pydoc
 PYDOC_FIELDS = [
@@ -148,18 +147,13 @@ def main(directory, output_md):
         markdown = generate_markdown(all_pydoc_info, repo_name)
         with open(output_md, 'w', encoding='utf-8') as md_file:
             md_file.write(markdown)
-
-        # Convert the markdown content to HTML
-        html_content = m.markdown(markdown)
-
-        with open('docs/pydoc.html', 'w', encoding='utf-8') as md_file:
-            md_file.write(html_content)
-
         print(f"Documentation generated: {output_md}")
-
-
     else:
-        print("No pydocs found.")
+        # Create an empty markdown file if no pydocs were found
+        with open(output_md, 'w', encoding='utf-8') as md_file:
+            md_file.write("# Documentation for " + repo_name + "\n\n")
+            md_file.write("No pydocs found.\n")
+        print(f"No pydocs found. Created empty documentation: {output_md}")
 
 
 if __name__ == "__main__":
