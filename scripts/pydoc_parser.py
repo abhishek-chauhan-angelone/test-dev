@@ -163,4 +163,4 @@ def main(directory, output_md):
 
 
 if __name__ == "__main__":
-    main('.', 'docs/pydoc.md')
+    main('.', 'README.md')
